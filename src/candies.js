@@ -24,7 +24,11 @@ const Candies = (function () {
    */
   ctr.prototype.add = function (candyType, candyQty) {
     if (typeof candyQty !== "number") {
-      throw new Error("invalid operation");
+      throw new Error("Invalid operation");
+    }
+
+    if (candyQty < 0) {
+      throw new Error("Only positive integers are allowed");
     }
 
     bin[candyType] += candyQty;
@@ -37,7 +41,11 @@ const Candies = (function () {
    */
   ctr.prototype.remove = function (candyType, candyQty) {
     if (typeof candyQty !== "number") {
-      throw new Error("invalid operation");
+      throw new Error("Invalid operation");
+    }
+
+    if (candyQty < 0) {
+      throw new Error("Only positive integers are allowed");
     }
 
     if (bin[candyType] < 1) return undefined;

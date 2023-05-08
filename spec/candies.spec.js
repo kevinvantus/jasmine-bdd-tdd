@@ -9,7 +9,11 @@ describe("Candy Store inventory", function () {
     it("should accept only [number] types when adding", function () {
       expect(() => {
         candy.add("skittles", "100");
-      }).toThrowError(Error, "invalid operation");
+      }).toThrowError(Error, "Invalid operation");
+    });
+
+    it("should accept only positive numbers as candy to add", function () {
+      expect(() => candy.add("caramel", -50)).toThrowError(Error, /positive/);
     });
 
     it("should add 500 skittles candy", function () {
@@ -38,7 +42,14 @@ describe("Candy Store inventory", function () {
     it("should accept only [number] types when removing", function () {
       expect(() => {
         candy.remove("caramel", "100");
-      }).toThrowError(Error, "invalid operation");
+      }).toThrowError(Error, "Invalid operation");
+    });
+
+    it("should accept only positive numbers as candy to remove", function () {
+      expect(() => candy.remove("caramel", -50)).toThrowError(
+        Error,
+        /positive/
+      );
     });
 
     it("Should return [undefined] if caramel quantity is zero", function () {
