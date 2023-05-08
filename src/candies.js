@@ -23,6 +23,10 @@ const Candies = (function () {
    * @param {number} candyQty
    */
   ctr.prototype.add = function (candyType, candyQty) {
+    if (typeof candyQty !== "number") {
+      throw new Error("invalid operation");
+    }
+
     bin[candyType] += candyQty;
   };
 
@@ -32,6 +36,10 @@ const Candies = (function () {
    * @param {number} candyQty
    */
   ctr.prototype.remove = function (candyType, candyQty) {
+    if (typeof candyQty !== "number") {
+      throw new Error("invalid operation");
+    }
+
     if (bin[candyType] < 1) return undefined;
 
     bin[candyType] -= candyQty;
@@ -39,15 +47,3 @@ const Candies = (function () {
 
   return ctr;
 })();
-
-// const candy = new Candies();
-// const candy2 = new Candies();
-
-// console.log(Candies.printBin());
-
-// candy.add("skittles", 500);
-// candy.add("caramel", 300);
-// candy.add("caramel", 300);
-// candy.remove("skittles", 30);
-
-// console.log(Candies.printBin());

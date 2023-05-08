@@ -5,8 +5,13 @@ describe("Candy Store inventory", function () {
     candy = new Candies();
   });
 
-  // Someone add candies
   describe("Add candies", function () {
+    it("should accept only [number] types when adding", function () {
+      expect(() => {
+        candy.add("skittles", "100");
+      }).toThrowError(Error, "invalid operation");
+    });
+
     it("should add 500 skittles candy", function () {
       const bin = Candies.getBinContents();
       const candyType = "skittles";
@@ -29,10 +34,14 @@ describe("Candy Store inventory", function () {
     });
   });
 
-  // Someone removes candies
   describe("Remove candies", function () {
+    it("should accept only [number] types when removing", function () {
+      expect(() => {
+        candy.remove("caramel", "100");
+      }).toThrowError(Error, "invalid operation");
+    });
+
     it("Should return [undefined] if caramel quantity is zero", function () {
-      const bin = Candies.getBinContents();
       const candyType = "caramel";
       const candyQty = 20;
 
