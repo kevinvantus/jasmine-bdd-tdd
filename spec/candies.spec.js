@@ -15,7 +15,6 @@ describe("Candy Store inventory", function () {
       candy.add(candyType, candyQty);
 
       expect(candyQty).toEqual(bin[candyType]);
-      console.log(bin);
     });
 
     it("should increase current amount of skittles by 300", function () {
@@ -27,7 +26,6 @@ describe("Candy Store inventory", function () {
       candy.add(candyType, candyQty);
 
       expect(currentAmt + candyQty).toEqual(bin[candyType]);
-      console.log(bin);
     });
   });
 
@@ -41,7 +39,6 @@ describe("Candy Store inventory", function () {
       const removed = candy.remove(candyType, candyQty);
 
       expect(removed).toBeUndefined();
-      console.log(bin, removed);
     });
 
     it("should decrease skittles count by 250", function () {
@@ -53,7 +50,6 @@ describe("Candy Store inventory", function () {
       candy.remove(candyType, candyQty);
 
       expect(currentAmt - candyQty).toEqual(bin[candyType]);
-      console.log(bin);
     });
 
     it("should remove only skittle candies", function () {
@@ -65,7 +61,6 @@ describe("Candy Store inventory", function () {
       candy.remove(candyType, candyQty);
 
       expect(bin["caramel"]).toEqual(currentAmt);
-      console.log(bin);
     });
   });
 });
